@@ -1,0 +1,51 @@
+# =====================================================================
+# DevQuery backend dependencies
+#
+# IMPORTANT: This project is tested on Python 3.10 ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ 3.12.
+# Python 3.13/3.14 will currently FAIL to install because faiss-cpu,
+# torch (transitive dep of sentence-transformers) and a few others
+# don't yet publish wheels for those versions on Windows. If you are
+# on Python 3.14, please create a venv with Python 3.12 instead:
+#
+#   py -3.12 -m venv .venv
+#   .\.venv\Scripts\Activate.ps1
+#   pip install -r requirements.txt
+# =====================================================================
+
+# --- Core API ---------------------------------------------------------
+fastapi>=0.115,<1.0
+uvicorn[standard]>=0.30,<1.0
+pydantic>=2.9,<3.0
+python-dotenv>=1.0,<2.0
+
+# --- Web crawling -----------------------------------------------------
+scrapy>=2.11,<3.0
+beautifulsoup4>=4.12,<5.0
+lxml>=5.2
+urllib3>=2.2
+
+# --- RAG / LangChain --------------------------------------------------
+# Pinned within a minor range because LangChain frequently breaks across
+# minor releases.
+langchain>=0.3.3,<0.4
+langchain-community>=0.3.2,<0.4
+langchain-core>=0.3.10,<0.4
+langchain-huggingface>=0.1.0,<0.4
+langchain-text-splitters>=0.3.0,<0.4
+
+# --- Embeddings + Vector store ----------------------------------------
+sentence-transformers>=3.0.1
+faiss-cpu>=1.8.0
+numpy>=1.26,<3.0
+
+# --- LLM (optional providers) -----------------------------------------
+google-genai>=1.0.0
+
+# --- Utilities --------------------------------------------------------
+tqdm>=4.66.0
+tiktoken>=0.7.0
+
+
+# --- Rendered-document pipeline ---
+playwright>=1.48,<2.0
+trafilatura>=2.0,<3.0
